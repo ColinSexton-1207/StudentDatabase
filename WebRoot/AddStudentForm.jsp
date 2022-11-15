@@ -38,7 +38,7 @@
 		</form>
 		<div style="clear: both;"></div>
 		<p>
-			<a href="StudentDatabase/Students">Back to Student List</a>
+			<a href="StudentControllerServlet">Back to Student List</a>
 		</p>
 	</div>
 </body>
