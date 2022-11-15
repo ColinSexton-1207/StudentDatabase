@@ -53,6 +53,15 @@ public class StudentControllerServlet extends HttpServlet {
 				case "addStudent":
 					AddStudent(request, response);
 					break;
+				case "loadStudents":
+					LoadStudent(request, response);
+					break;
+				case "updateStudent":
+					UpdateStudent(request, response);
+					break;
+				case "deleteStudent":
+					DeleteStudent(request, response);
+					break;
 				default:
 					ListStudents(request, response);
 					break;
@@ -85,9 +94,52 @@ public class StudentControllerServlet extends HttpServlet {
 		StudentProperties student = new StudentProperties(firstName, lastName, email);
 		
 		// Add student to database
-		studentDBUtil.AddStudent(student);
+		studentDBUtil.addStudent(student);
 		
 		// Send back to main page (ListStudents.jsp)
+		ListStudents(request, response);
+	}
+	
+	private void LoadStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// Read student id from form data
+		String studentId = request.getParameter("studentId");
+		
+		// Get student from database (DBUtil)
+		StudentProperties student = studentDBUtil.getStudent(studentId);
+		
+		// Place student in the request attribute
+		request.setAttribute("student", student);
+		
+		// Send to JSP page: UpdateStudentForm.jsp
+		RequestDispatcher disp = request.getRequestDispatcher("/UpdateStudentForm.jsp");
+		disp.forward(request, response);
+	}
+	
+	private void UpdateStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// Read Student info from form data
+		int id = Integer.parseInt(request.getParameter("studentId"));
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		
+		// Create a new student object
+		StudentProperties student = new StudentProperties(id, firstName, lastName, email);
+		
+		// Perform update on database
+		studentDBUtil.updateStudent(student);
+		
+		// Send them back to ListStudents page
+		ListStudents(request, response);
+	}
+	
+	private void DeleteStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// Read student id from form data
+		String studentId = request.getParameter("studentId");
+		
+		// Delete student from database
+		studentDBUtil.deleteStudent(studentId);
+		
+		// Send user back to list students page
 		ListStudents(request, response);
 	}
 }
