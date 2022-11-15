@@ -88,7 +88,7 @@ public class ConnectionManager {
 				setDriver("com.mysql.cj.jdbc.Driver");
 				setUrl("jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC");
 				setUser("DeveloperTest");
-				setPassword("test123!");
+				setPassword("Test123!");
 				setEmail("@valenterprises.org");
 				setTemporaryFilePath("\\tmp\\");
 				setMailServer("smtp.gmail.com");
@@ -98,7 +98,7 @@ public class ConnectionManager {
 				setDriver("com.mysql.cj.jdbc.Driver");
 				setUrl("jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC");
 				setUser("DeveloperTest");
-				setPassword("test123!");
+				setPassword("Test123!");
 				setEmail("@valenterprises.org");
 				setTemporaryFilePath("\\tmp\\");
 				setMailServer("smtp.gmail.com");

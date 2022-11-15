@@ -2,7 +2,7 @@
 	<Resource name="jdbc/test"
 		auth="Container" type="javax.sql.DataSource"
 			maxActive="20" maxIdle="5" maxWait="10000"
-			username="DeveloperTest" password="test123!"
+			username="DeveloperTest" password="Test123!"
 			driverClassName="com.mysql.cj.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/test?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
 </Context>

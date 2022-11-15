@@ -1,6 +1,7 @@
 package com.val.Student;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -51,6 +52,31 @@ public class StudentDBUtil {
 		} finally {
 			// Close JDBC objects
 			CloseConnection(connection, statement, resultSet);
+		}
+	}
+	
+	public void AddStudent(StudentProperties student) throws Exception {
+		 // Create SQL for insert
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			// Get DB connection
+			connection = dataSource.getConnection();
+			
+			// Set param values for student
+			String sql = "insert into student " + "(firstName, lastName, email) " + "values (?, ?, ?)";
+			statement = connection.prepareStatement(sql);
+			
+			statement.setString(1, student.getFirstName());
+			statement.setString(2, student.getLastName());
+			statement.setString(3, student.getEmail());
+			
+			// Execute SQL insert
+			statement.execute();
+		} finally {
+			// Clean up JDBC objects
+			CloseConnection(connection, statement, null);
 		}
 	}
 	
