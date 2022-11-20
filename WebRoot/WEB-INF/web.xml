@@ -7,14 +7,14 @@
 	<display-name>Student Database</display-name>
 	
 	<welcome-file-list> 
-		<welcome-file>StudentControllerServlet</welcome-file>
+		<welcome-file>Student</welcome-file>
 	</welcome-file-list>
 	<servlet>
-		<servlet-name>StudentControllerServlet</servlet-name>
-		<servlet-class>com.val.Web.JDBC.StudentControllerServlet</servlet-class>
+		<servlet-name>Student</servlet-name>
+		<servlet-class>com.val.WebServlet.Student</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>StudentControllerServlet</servlet-name>
+		<servlet-name>Student</servlet-name>
 		<url-pattern>/Students</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -1,18 +1,20 @@
 package com.val.Student;
 
 public class StudentProperties {
-	private int id;
+	/* --- Property Variables --- */
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	
+	/* --- Constructors --- */
+	public StudentProperties() { super(); }
 	public StudentProperties(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
-	
 	public StudentProperties(int id, String firstName, String lastName, String email) {
 		super();
 		this.id = id;
@@ -21,27 +23,25 @@ public class StudentProperties {
 		this.email = email;
 	}
 	
-	public int getId() {
+	/* --- Getters/Setters --- */
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
 	public String getEmail() {
 		return email;
 	}

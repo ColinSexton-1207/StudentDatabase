@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
+	/* --- Connection Variables --- */
 	private String key;
 	private String driver;
 	private String url;
@@ -14,8 +15,10 @@ public class ConnectionManager {
 	private String temp;
 	private String mailserver;
 	
+	/* --- Connection Variable --- */
 	private Connection connection = null;
 	
+	/* --- Getters/Setters --- */
 	public String getKey() {
 		return key;
 	}
@@ -76,11 +79,13 @@ public class ConnectionManager {
 		return connection;
 	}
 	
+	/* --- Connection Types --- */
 	public enum ConnectionType {
 		DEV,
 		PROD
 	}
 	
+	/* --- Constructor --- */
 	public ConnectionManager(ConnectionType connectionType) {
 		switch(connectionType) {
 			case DEV:
@@ -108,15 +113,25 @@ public class ConnectionManager {
 		}
 	}
 	
+	/* 
+	 * Method: OpenConnection
+	 * Access: Public
+	 * Description: When called, opens connection to the database
+	 */
 	public void OpenConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(getDriver());
 		
-		if(getUser().trim().length() == 0)
-			connection = DriverManager.getConnection(getUrl()); // URL includes username/password to establish connection?
+		if(getUser().trim().length() == 0) // If lacking user information, attempt to open a connection using URL data
+			connection = DriverManager.getConnection(getUrl()); // User information probably in URL, open connection
 		else
-			connection = DriverManager.getConnection(getUrl(), getUser(), getPassword());
+			connection = DriverManager.getConnection(getUrl(), getUser(), getPassword()); // Establish connection w/ DB using URL, User, and Password variables
 	}
 	
+	/* 
+	 * Method: CloseConnection
+	 * Access: Public
+	 * Description: When called, closes connection to the database
+	 */
 	public void CloseConnection() throws SQLException {
 		if(connection != null)
 			connection.close();
