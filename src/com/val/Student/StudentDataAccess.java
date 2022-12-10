@@ -82,9 +82,9 @@ public class StudentDataAccess {
 	private void SetParameters(StudentProperties properties) throws SQLException {
 		// If input data doesn't exist, set variable to null
 		// Else set the data as (type) and read in data value
-		if(properties.getFirstName()	== null) callableStatement.setNull("p_firstName", Types.CHAR	); else callableStatement.setString("p_firstName"	, properties.getFirstName());
-		if(properties.getLastName()		== null) callableStatement.setNull("p_lastName"	, Types.CHAR	); else callableStatement.setString("p_lastName"	, properties.getLastName());
-		if(properties.getEmail()		== null) callableStatement.setNull("p_email"	, Types.CHAR	); else callableStatement.setString("p_email"		, properties.getEmail());
+		if(properties.getFirstName()	== null) callableStatement.setNull("p_firstName", Types.VARCHAR	); else callableStatement.setString("p_firstName"	, properties.getFirstName());
+		if(properties.getLastName()		== null) callableStatement.setNull("p_lastName"	, Types.VARCHAR	); else callableStatement.setString("p_lastName"	, properties.getLastName());
+		if(properties.getEmail()		== null) callableStatement.setNull("p_email"	, Types.VARCHAR	); else callableStatement.setString("p_email"		, properties.getEmail());
 	}
 
 	/* 

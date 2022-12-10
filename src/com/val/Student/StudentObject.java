@@ -11,18 +11,18 @@ public class StudentObject {
 	
 	/* --- Constructors --- */
 	public StudentObject(ConnectionManager connectionManager) throws SQLException {
-		dataAccess = new StudentDataAccess(connectionManager);
+		dataAccess = new StudentDataAccess(connectionManager); // Initialize a Data Access object w/ current DB connection
 	}
 	
 	public StudentObject(ConnectionManager connectionManager, Integer p_id) throws ClassNotFoundException, SQLException {
-		dataAccess = new StudentDataAccess(connectionManager);
-		StudentProperties propertyKeys = new StudentProperties();
-		propertyKeys.setId(p_id);
-		properties = dataAccess.Select(propertyKeys);
+		dataAccess = new StudentDataAccess(connectionManager); // Initialize a Data Access object w/ current DB connection
+		StudentProperties propertyKeys = new StudentProperties(); // Initialize new StudentProperties object based on KEY
+		propertyKeys.setId(p_id); // Sets property KEY to ID
+		properties = dataAccess.Select(propertyKeys); // With current DataAccess, select based on KEY
 	}
 	
 	protected StudentObject(ConnectionManager connectionManagerBR, StudentProperties properties) throws ClassNotFoundException, SQLException {
-		dataAccess = new StudentDataAccess(connectionManagerBR);
+		dataAccess = new StudentDataAccess(connectionManagerBR); // Initialize a Data Access object w/ current DB connection
 		this.properties = properties;
 	}
 	
